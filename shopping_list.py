@@ -5,7 +5,8 @@ def show_help():
     print("""
 To add an item. Enter what you need after the '==>' sign.
 Enter "HELP" to show help.
-Enter "SHOW" to see your current list
+Enter "SHOW" to see your current list.
+Enter "REMOVE" to delete the most recent item.
 Enter "DONE" to stop adding items.
 """)
 
@@ -27,6 +28,13 @@ def show_list():
     current_shopping_list = current_shopping_list.title()
     print("Here's your list: {}".format(current_shopping_list))
 
+def remove_item():
+    if shopping_list == []:
+        print("The list is empty!")
+    else:
+        removed_item = shopping_list.pop()
+        print("Item: {} has been removed!".format(removed_item))
+
 
 show_help()
 while True:
@@ -35,10 +43,10 @@ while True:
         break
     elif new_item.upper() == "HELP":
         show_help()
-        continue
     elif new_item.upper() == "SHOW":
         show_list()
-        continue
+    elif new_item.upper() == "REMOVE":
+        remove_item()
     else:
         add_to_list(new_item)
 
